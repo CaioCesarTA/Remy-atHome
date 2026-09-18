@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+<robot name="Manip_revis">
+
+  <!-- Grupo de planejamento: da base até o flange da ferramenta (ponta da garra) -->
+  <group name="arm">
+    <chain base_link="base_link" tip_link="flange_ferramenta"/>
+  </group>
+
+  <!-- Pose "home" = mesmos valores iniciais definidos no ros2_control -->
+  <group_state name="home" group="arm">
+    <joint name="junta_ombro" value="-0.7"/>
+    <joint name="junta_cotovelo" value="-0.4"/>
+    <joint name="junta_punho" value="-1.0"/>
+  </group_state>
+
+  <group_state name="zero" group="arm">
+    <joint name="junta_ombro" value="0"/>
+    <joint name="junta_cotovelo" value="0"/>
+    <joint name="junta_punho" value="0"/>
+  </group_state>
+
+  <!-- Define o flange como o ponto que o MoveIt vai controlar (ponta da garra) -->
+  <end_effector name="garra" parent_link="flange_ferramenta" group="arm"/>
+
+  <!-- Pares de elos vizinhos: sempre em contato por construção, não é colisão real -->
+  <disable_collisions link1="base_link" link2="suporte_ombro" reason="Adjacent"/>
+  <disable_collisions link1="suporte_ombro" link2="elo_ombro" reason="Adjacent"/>
+  <disable_collisions link1="elo_ombro" link2="braco" reason="Adjacent"/>
+  <disable_collisions link1="braco" link2="garfo_cotovelo_1" reason="Adjacent"/>
+  <disable_collisions link1="braco" link2="garfo_cotovelo_2" reason="Adjacent"/>
+  <disable_collisions link1="garfo_cotovelo_1" link2="garfo_cotovelo_2" reason="Default"/>
+  <disable_collisions link1="garfo_cotovelo_2" link2="elo_cotovelo" reason="Adjacent"/>
+  <disable_collisions link1="elo_cotovelo" link2="antebraco" reason="Adjacent"/>
+  <disable_collisions link1="antebraco" link2="garfo_punho_1" reason="Adjacent"/>
+  <disable_collisions link1="antebraco" link2="garfo_punho_2" reason="Adjacent"/>
+  <disable_collisions link1="garfo_punho_1" link2="garfo_punho_2" reason="Default"/>
+  <disable_collisions link1="garfo_punho_2" link2="elo_punho" reason="Adjacent"/>
+  <disable_collisions link1="elo_punho" link2="suporte_efetuador" reason="Adjacent"/>
+  <disable_collisions link1="suporte_efetuador" link2="flange_ferramenta" reason="Adjacent"/>
+
+</robot>

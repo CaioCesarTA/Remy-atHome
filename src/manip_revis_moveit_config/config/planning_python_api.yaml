@@ -1,0 +1,10 @@
+planning_pipelines:
+  pipeline_names: ["ompl"]
+
+plan_request_params:
+  planner_id: ""
+  planning_pipeline: ompl
+  planning_attempts: 5
+  planning_time: 5.0
+  max_velocity_scaling_factor: 0.5
+  max_acceleration_scaling_factor: 0.5

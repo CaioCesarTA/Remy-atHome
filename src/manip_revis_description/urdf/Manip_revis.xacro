@@ -1,0 +1,364 @@
+<?xml version="1.0" ?>
+<robot name="Manip_revis" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find manip_revis_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find manip_revis_description)/urdf/Manip_revis.ros2control" />
+<xacro:include filename="$(find manip_revis_description)/urdf/Manip_revis.gazebo" />
+<link name="world"/>
+<joint name="world_to_base" type="fixed">
+  <parent link="world"/>
+  <child link="base_link"/>
+  <origin xyz="0 0 0" rpy="0 0 0"/>
+</joint>
+<link name="base_link">
+  <inertial>
+    <origin xyz="0.009155815108888382 0.0034514828401321783 0.04700095003612501" rpy="0 0 0"/>
+    <mass value="4.33480004831894"/>
+    <inertia ixx="0.00709" iyy="0.008382" izz="0.007647" ixy="0.000137" iyz="-0.000195" ixz="0.001478"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://manip_revis_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://manip_revis_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="suporte_ombro">
+  <inertial>
+    <origin xyz="-0.0325539842183545 0.0053685899054949915 -3.95516952522712e-16" rpy="0 0 0"/>
+    <mass value="0.7923110570486152"/>
+    <inertia ixx="0.00023" iyy="0.000347" izz="0.000459" ixy="-1e-06" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0325 0.052 -0.06" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://manip_revis_description/meshes/suporte_ombro.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0325 0.052 -0.06" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://manip_revis_description/meshes/suporte_ombro.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="elo_ombro">
+  <inertial>
+    <origin xyz="3.991598718222633e-15 -0.02209521446720704 -5.273559366969494e-16" rpy="0 0 0"/>
+    <mass value="1.0271366636708665"/>
+    <inertia ixx="0.000419" iyy="0.000511" izz="0.0005" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.015 0.0785 -0.06" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://manip_revis_description/meshes/elo_ombro.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.015 0.0785 -0.06" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://manip_revis_description/meshes/elo_ombro.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="braco">
+  <inertial>
+    <origin xyz="-0.004000000000000281 5.471363147269148e-08 0.1501179664756108" rpy="0 0 0"/>
+    <mass value="0.12911789574228458"/>
+    <inertia ixx="0.000973" iyy="0.000973" izz="1.1e-05" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.011 0.1005 -0.035" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://manip_revis_description/meshes/braco.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.011 0.1005 -0.035" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://manip_revis_description/meshes/braco.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="garfo_cotovelo_1">
+  <inertial>
+    <origin xyz="0.003949880865941452 -2.413930591943503e-07 -0.0029384133486902164" rpy="0 0 0"/>
+    <mass value="0.3034443651771143"/>
+    <inertia ixx="7.9e-05" iyy="7.8e-05" izz="0.000127" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.019 0.1005 -0.335" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://manip_revis_description/meshes/garfo_cotovelo_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.019 0.1005 -0.335" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://manip_revis_description/meshes/garfo_cotovelo_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="garfo_cotovelo_2">
+  <inertial>
+    <origin xyz="-2.4494295480792516e-15 -7.067951739336831e-05 0.02354307476678441" rpy="0 0 0"/>
+    <mass value="0.3465493378432902"/>
+    <inertia ixx="0.000102" iyy="8.3e-05" izz="5.7e-05" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.015 0.1005 -0.335" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://manip_revis_description/meshes/garfo_cotovelo_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.015 0.1005 -0.335" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://manip_revis_description/meshes/garfo_cotovelo_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="elo_cotovelo">
+  <inertial>
+    <origin xyz="3.869193333783105e-11 0.020782878183679854 0.031157961678787427" rpy="0 0 0"/>
+    <mass value="0.37940108482400686"/>
+    <inertia ixx="0.000347" iyy="0.000253" izz="0.000213" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.015 0.122901 -0.371" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://manip_revis_description/meshes/elo_cotovelo.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.015 0.122901 -0.371" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://manip_revis_description/meshes/elo_cotovelo.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="antebraco">
+  <inertial>
+    <origin xyz="9.384793143996095e-09 2.9592124473065695e-07 0.1250833750583238" rpy="0 0 0"/>
+    <mass value="0.10755720068938877"/>
+    <inertia ixx="0.000564" iyy="0.000564" izz="9e-06" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.015 0.102141 -0.393" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://manip_revis_description/meshes/antebraco.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.015 0.102141 -0.393" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://manip_revis_description/meshes/antebraco.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="garfo_punho_1">
+  <inertial>
+    <origin xyz="0.003950612913704705 4.880532458173548e-07 -0.0029384127824459982" rpy="0 0 0"/>
+    <mass value="0.3034443651771143"/>
+    <inertia ixx="7.9e-05" iyy="7.8e-05" izz="0.000127" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.019 0.102141 -0.643" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://manip_revis_description/meshes/garfo_punho_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.019 0.102141 -0.643" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://manip_revis_description/meshes/garfo_punho_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="garfo_punho_2">
+  <inertial>
+    <origin xyz="-2.7998436902265667e-15 -7.043285720688408e-05 0.023543075333028685" rpy="0 0 0"/>
+    <mass value="0.3465493378432902"/>
+    <inertia ixx="0.000102" iyy="8.3e-05" izz="5.7e-05" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.015 0.102141 -0.643" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://manip_revis_description/meshes/garfo_punho_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.015 0.102141 -0.643" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://manip_revis_description/meshes/garfo_punho_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="elo_punho">
+  <inertial>
+    <origin xyz="3.869436715486785e-11 0.020783124843866366 0.031157962245031756" rpy="0 0 0"/>
+    <mass value="0.37940108482400686"/>
+    <inertia ixx="0.000347" iyy="0.000253" izz="0.000213" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.015 0.124542 -0.679" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://manip_revis_description/meshes/elo_punho.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.015 0.124542 -0.679" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://manip_revis_description/meshes/elo_punho.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="suporte_efetuador">
+  <inertial>
+    <origin xyz="-1.2333883914195098e-15 5.480340106722714e-07 0.07513000499949785" rpy="0 0 0"/>
+    <mass value="0.06455894785914394"/>
+    <inertia ixx="0.000123" iyy="0.000123" izz="5e-06" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.015 0.103782 -0.701" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://manip_revis_description/meshes/suporte_efetuador.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.015 0.103782 -0.701" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://manip_revis_description/meshes/suporte_efetuador.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="flange_ferramenta">
+  <inertial>
+    <origin xyz="0.007581862842638972 0.004000493320373694 0.00022481405314167535" rpy="0 0 0"/>
+    <mass value="0.1891882730231785"/>
+    <inertia ixx="5.2e-05" iyy="5.8e-05" izz="5.9e-05" ixy="-0.0" iyz="-0.0" ixz="-1.5e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.015 0.107782 -0.851" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://manip_revis_description/meshes/flange_ferramenta.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.015 0.107782 -0.851" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://manip_revis_description/meshes/flange_ferramenta.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="fixo_suporte_ombro" type="fixed">
+  <origin xyz="0.0325 -0.052 0.06" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="suporte_ombro"/>
+</joint>
+
+<joint name="junta_ombro" type="revolute">
+  <origin xyz="-0.0475 -0.0265 0.0" rpy="0 0 0"/>
+  <limit lower="-1.57" upper="1.57" effort="15.0" velocity="2.0"/>
+  <parent link="suporte_ombro"/>
+  <child link="elo_ombro"/>
+  <axis xyz="0.0 -1.0 0.0"/>
+</joint>
+
+<joint name="fixo_braco" type="fixed">
+  <origin xyz="0.004 -0.022 -0.025" rpy="0 0 0"/>
+  <parent link="elo_ombro"/>
+  <child link="braco"/>
+</joint>
+
+<joint name="fixo_garfo_cotovelo_1" type="fixed">
+  <origin xyz="-0.008 0.0 0.3" rpy="0 0 0"/>
+  <parent link="braco"/>
+  <child link="garfo_cotovelo_1"/>
+</joint>
+
+<joint name="fixo_garfo_cotovelo_2" type="fixed">
+  <origin xyz="-0.004 0.0 0.3" rpy="0 0 0"/>
+  <parent link="braco"/>
+  <child link="garfo_cotovelo_2"/>
+</joint>
+
+<joint name="junta_cotovelo" type="revolute">
+  <origin xyz="0.0 -0.022401 0.036" rpy="0 0 0"/>
+  <limit lower="-1.57" upper="1.57" effort="15.0" velocity="2.0"/>
+  <parent link="garfo_cotovelo_2"/>
+  <child link="elo_cotovelo"/>
+  <axis xyz="-0.0 -1.0 0.0"/>
+</joint>
+
+<joint name="fixo_antebraco" type="fixed">
+  <origin xyz="0.0 0.02076 0.022" rpy="0 0 0"/>
+  <parent link="elo_cotovelo"/>
+  <child link="antebraco"/>
+</joint>
+
+<joint name="fixo_garfo_punho_1" type="fixed">
+  <origin xyz="-0.004 0.0 0.25" rpy="0 0 0"/>
+  <parent link="antebraco"/>
+  <child link="garfo_punho_1"/>
+</joint>
+
+<joint name="fixo_garfo_punho_2" type="fixed">
+  <origin xyz="0.0 0.0 0.25" rpy="0 0 0"/>
+  <parent link="antebraco"/>
+  <child link="garfo_punho_2"/>
+</joint>
+
+<joint name="junta_punho" type="revolute">
+  <origin xyz="0.0 -0.022401 0.036" rpy="0 0 0"/>
+  <limit lower="-1.57" upper="1.57" effort="15.0" velocity="2.0"/>
+  <parent link="garfo_punho_2"/>
+  <child link="elo_punho"/>
+  <axis xyz="-0.0 -1.0 0.0"/>
+</joint>
+
+<joint name="fixo_suporte_efetuador" type="fixed">
+  <origin xyz="0.0 0.02076 0.022" rpy="0 0 0"/>
+  <parent link="elo_punho"/>
+  <child link="suporte_efetuador"/>
+</joint>
+
+<joint name="fixo_flange_ferramenta" type="fixed">
+  <origin xyz="0.0 -0.004 0.15" rpy="0 0 0"/>
+  <parent link="suporte_efetuador"/>
+  <child link="flange_ferramenta"/>
+</joint>
+
+</robot>
