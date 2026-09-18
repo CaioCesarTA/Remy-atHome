@@ -1,0 +1,19 @@
+cat << 'EOF' > .gitignore
+# ROS 2 build files and logs
+build/
+install/
+log/
+
+# IDE and Editors (VS Code)
+.vscode/
+*.db
+*.sqlite
+
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Large model files (caso queira que o git ignore o .onnx de 60MB)
+src/comunicacao/scripts/pt_BR-faber-medium.onnx
+EOF
